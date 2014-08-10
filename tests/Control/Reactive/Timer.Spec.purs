@@ -9,15 +9,15 @@ import Test.Chai
 spec = describe "Timer" $ do
 
   itAsync "timeout should resolve" $ \done -> do
-    timeout 5 \_ -> return $ itIs done
+    timeout 5 $ return $ itIs done
 
   itAsync "clearTimeout cancels the timer" $ \done -> do
     hasRun <- newSTRef false
     
-    t <- timeout 5 \_ -> modifySTRef hasRun \_ -> true    
+    t <- timeout 5 $ modifySTRef hasRun \_ -> true    
     clearTimeout t
 
-    timeout 10 \_ -> do
+    timeout 10 $ do
       hasRun' <- readSTRef hasRun
       expect hasRun' `toEqual` false
       return $ itIs done
@@ -27,9 +27,9 @@ spec = describe "Timer" $ do
     let count = 7
     
     runCount <- newSTRef 0
-    t <- interval rate \_ -> modifySTRef runCount \n -> n + 1
+    t <- interval rate $ modifySTRef runCount \n -> n + 1
 
-    timeout (rate * (count + 1)) \_ -> do
+    timeout (rate * (count + 1)) $ do
       runCount' <- readSTRef runCount
       expect runCount' `toBeAtLeast` count
       clearInterval t
@@ -38,10 +38,10 @@ spec = describe "Timer" $ do
   itAsync "clearInterval cancels the timer" $ \done -> do 
     hasRun <- newSTRef false
 
-    t <- interval 5 \_ -> modifySTRef hasRun \_ -> true
+    t <- interval 5 $ modifySTRef hasRun \_ -> true
     clearInterval t
 
-    timeout 10 \_ -> do
+    timeout 10 $ do
       hasRun' <- readSTRef hasRun
       expect hasRun' `toEqual` false
       return $ itIs done

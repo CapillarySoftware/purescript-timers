@@ -12,13 +12,13 @@ foreign import timeout
   \   return function(fn){                     \
   \     return function(){                     \
   \       return window.setTimeout(function(){ \
-  \         fn()();                            \
+  \         fn();                              \
   \       }, time);                            \
   \     };                                     \
   \   };                                       \
-  \ }" :: forall a d eff. 
+  \ }" :: forall a eff. 
           Number ->  
-          (d -> Eff (timer :: Timer | eff) a) -> 
+          (Eff (timer :: Timer | eff) a) -> 
           Eff (timer :: Timer | eff) Timeout
 
 foreign import clearTimeout 
@@ -35,13 +35,13 @@ foreign import interval
   \   return function(fn){                      \
   \     return function(){                      \
   \       return window.setInterval(function(){ \
-  \         fn()();                             \
+  \         fn();                               \
   \       }, time);                             \
   \     };                                      \
   \   };                                        \
   \ }" :: forall a d eff.
           Number ->
-          (d -> Eff (timer :: Timer | eff) a) ->
+          (Eff (timer :: Timer | eff) a) ->
           Eff (timer :: Timer | eff) Interval
 
 foreign import clearInterval
