@@ -1,6 +1,6 @@
 {
   "name": "purescript-timers",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/CapillarySoftware/purescript-timers",
   "authors": [
     "Isaac Shapira <fresheyeball@gmail.com>"
@@ -23,6 +23,7 @@
     "bower_components",
     "node_modules",
     "tmp",
+    "tests",
     "bower.json",
     "gulpfile.js",
     "package.json"
