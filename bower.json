@@ -22,7 +22,7 @@
     "**/.*",
     "bower_components",
     "node_modules",
-    "output",
+    "tmp",
     "bower.json",
     "gulpfile.js",
     "package.json"
