@@ -1,3 +1,3 @@
 module Main where
 
-main = Control.Reactive.Timer.Spec.spec
+main = Control.Timer.Spec.spec

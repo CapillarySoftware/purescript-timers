@@ -1,4 +1,4 @@
-module Control.Reactive.Timer where
+module Control.Timer where
 
 import Control.Monad.Eff
 import Data.Foreign.EasyFFI

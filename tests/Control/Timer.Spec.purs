@@ -1,6 +1,6 @@
-module Control.Reactive.Timer.Spec where
+module Control.Timer.Spec where
 
-import Control.Reactive.Timer
+import Control.Timer
 import Control.Monad.ST
 import Debug.Trace
 import Test.Mocha
