@@ -3,6 +3,7 @@ module Control.Timer.Spec where
 import Control.Timer
 import Control.Monad.ST
 import Debug.Trace
+import Debug.Foreign
 import Test.Mocha
 import Test.Chai
 
@@ -45,6 +46,10 @@ spec = describe "Timer" $ do
       hasRun' <- readSTRef hasRun
       expect hasRun' `toEqual` false
       itIs done
+
+  itAsync "delay is composable" $ \done -> 
+    return done >>= delay 10 itIs
+    
 
 
 
