@@ -3,7 +3,6 @@ module Control.Timer.Spec where
 import Control.Timer
 import Control.Monad.ST
 import Debug.Trace
-import Debug.Foreign
 import Test.Mocha
 import Test.Chai
 
