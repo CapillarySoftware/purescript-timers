@@ -45,11 +45,3 @@ spec = describe "Timer" $ do
       hasRun' <- readSTRef hasRun
       expect hasRun' `toEqual` false
       itIs done
-
-  itAsync "delay is composable" $ \done -> 
-    return done >>= delay 10 itIs
-    
-
-
-
-    

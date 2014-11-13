@@ -15,10 +15,6 @@
     "setInterval"
   ],
   "license": "MIT",
-  "dependencies": {
-    "purescript-easy-ffi": "~1.0.1",
-    "purescript-transformers": "~0.2.1"
-  },
   "ignore": [
     "**/.*",
     "bower_components",
