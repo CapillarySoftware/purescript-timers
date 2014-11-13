@@ -1,7 +1,6 @@
 module Control.Timer where
 
 import Control.Monad.Eff
-import Data.Foreign.EasyFFI
 
 foreign import data Timer     :: !
 foreign import data Timeout   :: *
