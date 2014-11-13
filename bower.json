@@ -1,6 +1,6 @@
 {
   "name": "purescript-timers",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "homepage": "https://github.com/CapillarySoftware/purescript-timers",
   "authors": [
     "Isaac Shapira <fresheyeball@gmail.com>"
