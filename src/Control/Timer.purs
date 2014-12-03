@@ -1,4 +1,15 @@
-module Control.Timer where
+module Control.Timer
+  ( Timer(),
+    Timeout(),
+    Interval(),
+    Milliseconds(),
+    EffTimer(),
+
+    timeout,
+    clearTimeout,
+    interval,
+    clearInterval
+  ) where
 
 import Control.Monad.Eff
 
@@ -10,22 +21,26 @@ type Milliseconds = Number
 
 type EffTimer e a = Eff (timer :: Timer | e) a
 
+foreign import globalEnv
+  "var globalEnv = typeof window === 'undefined' ? global : window"
+  :: forall a. a
+
 foreign import timeout """
-  function timeout(time){                     
-    return function(fn){                     
-      return function(){                     
-        return window.setTimeout(function(){ 
-          fn();                              
-        }, time);                            
-      };                                     
-    };                                       
+  function timeout(time){
+    return function(fn){
+      return function(){
+        return globalEnv.setTimeout(function(){
+          fn();
+        }, time);
+      };
+    };
   }
 """ :: forall a e. Milliseconds -> EffTimer e a -> EffTimer e Timeout
 
 foreign import clearTimeout """
   function clearTimeout(timer){
     return function(){
-      return window.clearTimeout(timer);
+      return globalEnv.clearTimeout(timer);
     };
   }
 """ :: forall e. Timeout -> EffTimer e Unit
@@ -34,7 +49,7 @@ foreign import interval """
   function interval(time){
     return function(fn){
       return function(){
-        return window.setInterval(function(){ 
+        return globalEnv.setInterval(function(){
           fn();
         }, time);
       };
@@ -45,7 +60,7 @@ foreign import interval """
 foreign import clearInterval """
   function clearInterval(timer){
     return function(){
-      return window.clearInterval(timer);
+      return globalEnv.clearInterval(timer);
     };
   }
 """ :: forall e. Interval -> EffTimer e Unit
