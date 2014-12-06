@@ -5,6 +5,7 @@ runSq      = require('run-sequence'),
 karma      = require('gulp-karma'),
 gulpif     = require('gulp-if'),
 concat     = require('gulp-concat'),
+mocha      = require('gulp-mocha'),
 
 src        = ['bower_components/purescript-*/src/**/*.purs',
               'bower_components/chai/chai.js',
@@ -41,6 +42,9 @@ gulp.task('test:unit',function(){
   setTimeout(function(){
     gulp.src(dest.path+dest.file).pipe(karma);  
   },2000);  
+  setTimeout(function(){
+    gulp.src(dest.path+dest.file).pipe(mocha());
+  },2000);
 });
 
 gulp.task('test', function(){ runSq('build:test', 'test:unit'); });

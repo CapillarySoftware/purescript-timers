@@ -9,6 +9,10 @@
     "gulp": "~3.8.7",
     "run-sequence": "~0.3.6",
     "gulp-if": "~1.2.4",
-    "gulp-concat": "~2.3.4"
+    "gulp-concat": "~2.3.4",
+    "gulp-mocha": "~2.0.0"
+  },
+  "dependencies": {
+    "chai": "~1.10.0"
   }
 }
