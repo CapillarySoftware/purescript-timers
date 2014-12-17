@@ -12,6 +12,8 @@ module Control.Timer
   ) where
 
 import Control.Monad.Eff
+import Data.Foreign.OOFFI(method1Eff, method2Eff)
+import Context(getContext)
 
 foreign import data Timer     :: !
 foreign import data Timeout   :: *
@@ -21,46 +23,14 @@ type Milliseconds = Number
 
 type EffTimer e a = Eff (timer :: Timer | e) a
 
-foreign import globalEnv
-  "var globalEnv = typeof window === 'undefined' ? global : window"
-  :: forall a. a
+timeout         :: forall a e. Milliseconds -> EffTimer e a -> EffTimer e Timeout
+timeout m fn    = getContext >>= \c -> method2Eff "setTimeout" c fn m 
 
-foreign import timeout """
-  function timeout(time){
-    return function(fn){
-      return function(){
-        return globalEnv.setTimeout(function(){
-          fn();
-        }, time);
-      };
-    };
-  }
-""" :: forall a e. Milliseconds -> EffTimer e a -> EffTimer e Timeout
+clearTimeout    :: forall e. Timeout -> EffTimer e Unit
+clearTimeout t  = getContext >>= \c -> method1Eff "clearTimeout" c t 
 
-foreign import clearTimeout """
-  function clearTimeout(timer){
-    return function(){
-      return globalEnv.clearTimeout(timer);
-    };
-  }
-""" :: forall e. Timeout -> EffTimer e Unit
+interval        :: forall a e. Milliseconds -> EffTimer e a -> EffTimer e Interval
+interval m fn   = getContext >>= \c -> method2Eff "setInterval" c fn m  
 
-foreign import interval """
-  function interval(time){
-    return function(fn){
-      return function(){
-        return globalEnv.setInterval(function(){
-          fn();
-        }, time);
-      };
-    };
-  }
-""" :: forall a e. Milliseconds -> EffTimer e a -> EffTimer e Interval
-
-foreign import clearInterval """
-  function clearInterval(timer){
-    return function(){
-      return globalEnv.clearInterval(timer);
-    };
-  }
-""" :: forall e. Interval -> EffTimer e Unit
+clearInterval   :: forall e. Interval -> EffTimer e Unit
+clearInterval t = getContext >>= \c -> method1Eff "clearInterval" c t 

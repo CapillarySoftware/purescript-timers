@@ -28,5 +28,9 @@
   "devDependencies": {
     "purescript-mocha": "~0.0.3",
     "purescript-chai": "~0.0.3"
+  },
+  "dependencies": {
+    "purescript-context": "~0.0.3",
+    "purescript-oo-ffi": "~0.0.3"
   }
 }
