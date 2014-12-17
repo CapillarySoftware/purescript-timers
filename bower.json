@@ -6,7 +6,6 @@
     "Isaac Shapira <fresheyeball@gmail.com>"
   ],
   "description": "Native timer bindings for PureScript",
-  "main": "src/Control/Reactive/Timer.purs",
   "keywords": [
     "Purescript",
     "Timer",
