@@ -12,8 +12,7 @@ module Control.Timer
   ) where
 
 import Control.Monad.Eff
-import Data.Foreign.OOFFI(method1Eff, method2Eff)
-import Context(getContext)
+import Data.Foreign.OOFFI(method1EffC, method2EffC)
 
 foreign import data Timer     :: !
 foreign import data Timeout   :: *
@@ -23,14 +22,14 @@ type Milliseconds = Number
 
 type EffTimer e a = Eff (timer :: Timer | e) a
 
-timeout         :: forall a e. Milliseconds -> EffTimer e a -> EffTimer e Timeout
-timeout m fn    = getContext >>= \c -> method2Eff "setTimeout" c fn m 
+timeout       :: forall a e. Milliseconds -> EffTimer e a -> EffTimer e Timeout
+timeout       = flip $ method2EffC "setTimeout"
 
-clearTimeout    :: forall e. Timeout -> EffTimer e Unit
-clearTimeout t  = getContext >>= \c -> method1Eff "clearTimeout" c t 
+clearTimeout  :: forall e. Timeout -> EffTimer e Unit
+clearTimeout  = method1EffC "clearTimeout"
 
-interval        :: forall a e. Milliseconds -> EffTimer e a -> EffTimer e Interval
-interval m fn   = getContext >>= \c -> method2Eff "setInterval" c fn m  
+interval      :: forall a e. Milliseconds -> EffTimer e a -> EffTimer e Interval
+interval      = flip $ method2EffC "setInterval"
 
-clearInterval   :: forall e. Interval -> EffTimer e Unit
-clearInterval t = getContext >>= \c -> method1Eff "clearInterval" c t 
+clearInterval :: forall e. Interval -> EffTimer e Unit
+clearInterval = method1EffC "clearInterval"
