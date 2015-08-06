@@ -1,27 +1,21 @@
-# Module Documentation
+# purescript-timers
 
 [![Build Status](https://travis-ci.org/CapillarySoftware/purescript-timers.svg?branch=master)](https://travis-ci.org/CapillarySoftware/purescript-timers)
 
-## Module Control.Reactive.Timer
+## Installation
 
-### Types
+```
+bower install purescript-timers
+```
 
-    data Interval :: *
+## Module documentation
 
-    data Timeout :: *
+- [Control.Timer](docs/Control/Timer.md)
 
-    data Timer :: !
+## Build
 
-
-### Values
-
-    clearInterval :: forall eff. Interval -> Eff (timer :: Timer | eff) Unit
-
-    clearTimeout :: forall eff. Timeout -> Eff (timer :: Timer | eff) Unit
-
-    interval :: forall a d eff. Number -> (d -> Eff (timer :: Timer | eff) a) -> Eff (timer :: Timer | eff) Interval
-
-    timeout :: forall a d eff. Number -> (d -> Eff (timer :: Timer | eff) a) -> Eff (timer :: Timer | eff) Timeout
-
-
-
+```
+pulp build
+pulp test
+pulp docs
+```

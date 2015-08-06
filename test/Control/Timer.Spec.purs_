@@ -13,8 +13,8 @@ spec = describe "Timer" $ do
 
   itAsync "clearTimeout cancels the timer" $ \done -> do
     hasRun <- newSTRef false
-    
-    t <- timeout 5 $ modifySTRef hasRun \_ -> true    
+
+    t <- timeout 5 $ modifySTRef hasRun \_ -> true
     clearTimeout t
 
     timeout 10 $ do
@@ -22,10 +22,10 @@ spec = describe "Timer" $ do
       expect hasRun' `toEqual` false
       itIs done
 
-  itAsync "interval should resolve" $ \done -> do 
+  itAsync "interval should resolve" $ \done -> do
     let rate  = 10
     let count = 7
-    
+
     runCount <- newSTRef 0
     t <- interval rate $ modifySTRef runCount \n -> n + 1
 
@@ -35,7 +35,7 @@ spec = describe "Timer" $ do
       clearInterval t
       itIs done
 
-  itAsync "clearInterval cancels the timer" $ \done -> do 
+  itAsync "clearInterval cancels the timer" $ \done -> do
     hasRun <- newSTRef false
 
     t <- interval 5 $ modifySTRef hasRun \_ -> true
@@ -46,10 +46,5 @@ spec = describe "Timer" $ do
       expect hasRun' `toEqual` false
       itIs done
 
-  itAsync "delay is composable" $ \done -> 
+  itAsync "delay is composable" $ \done ->
     return done >>= delay 10 itIs
-    
-
-
-
-    
