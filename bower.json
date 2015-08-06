@@ -3,11 +3,10 @@
   "version": "0.0.5",
   "homepage": "https://github.com/CapillarySoftware/purescript-timers",
   "authors": [
-    "Isaac Shapira <fresheyeball@gmail.com>",
-    "Legokichi Duckscallion <legokichi@gmail.com>"
+    "Isaac Shapira <fresheyeball@gmail.com>"
   ],
   "description": "Native timer bindings for PureScript",
-  "main": "src/Control/Reactive/Timer.purs",
+  "main": "src/Control/Timer.purs",
   "keywords": [
     "Purescript",
     "Timer",

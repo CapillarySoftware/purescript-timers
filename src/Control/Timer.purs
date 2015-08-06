@@ -1,3 +1,20 @@
+-- | ## Exaple
+-- | ```purescript
+-- | module Main where
+-- |
+-- | import Prelude
+-- | import Control.Monad.Eff (Eff())
+-- | import Control.Monad.Eff.Console (print, CONSOLE())
+-- | import Control.Timer
+-- |
+-- | main :: forall eff. Eff (console :: CONSOLE, timer :: Timer | eff) Unit
+-- | main = do
+-- |   print 1
+-- |   t <- timeout 10 $ do
+-- |     print 3
+-- |   print 2
+-- | ```
+
 module Control.Timer where
 
 import Prelude
@@ -27,7 +44,9 @@ foreign import clearInterval :: forall eff.
           Interval ->
           Eff (timer :: Timer | eff) Unit
 
-
+-- | ```purescript
+-- | delay 1000 log "hi"
+-- | ```
 delay :: forall a b eff.
           Milliseconds
           -> (a -> Eff (timer :: Timer | eff) b)
