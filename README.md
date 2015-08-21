@@ -11,10 +11,6 @@
 bower install purescript-timers
 ```
 
-## Module documentation
-
-- [Control.Timer](docs/Control/Timer.md)
-
 ## Build
 
 ```
