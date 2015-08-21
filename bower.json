@@ -17,6 +17,10 @@
     "purescript-eff": "~0.1.0",
     "purescript-prelude": "~0.1.1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/CapillarySoftware/purescript-timers.git"
+  },
   "ignore": [
     "**/.*",
     "bower_components",
