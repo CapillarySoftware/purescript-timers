@@ -9,11 +9,14 @@
   "keywords": [
     "Purescript",
     "Timer",
-    "Reactive",
     "setTimeout",
     "setInterval"
   ],
   "license": "MIT",
+  "dependencies": {
+    "purescript-eff": "~0.1.0",
+    "purescript-prelude": "~0.1.1"
+  },
   "ignore": [
     "**/.*",
     "bower_components",
@@ -25,10 +28,8 @@
     "package.json"
   ],
   "devDependencies": {
-    "purescript-mocha": "~0.0.3",
-    "purescript-chai": "~0.0.3"
-  },
-  "dependencies": {
-    "purescript-oo-ffi": "~0.0.3"
+    "purescript-console": "~0.1.0",
+    "purescript-exceptions": "~0.3.0",
+    "purescript-spec": "~0.7.1"
   }
 }
