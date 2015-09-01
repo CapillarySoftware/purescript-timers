@@ -1,4 +1,4 @@
-## Module Control.Timer
+## Module DOM.Timer
 
 ## Exaple
 ```purescript
@@ -7,7 +7,7 @@ module Main where
 import Prelude
 import Control.Monad.Eff (Eff())
 import Control.Monad.Eff.Console (print, CONSOLE())
-import Control.Timer
+import DOM.Timer
 
 main :: forall eff. Eff (console :: CONSOLE, timer :: Timer | eff) Unit
 main = do
