@@ -4,9 +4,9 @@ import Prelude
 import Control.Monad.Eff (Eff())
 import Control.Monad.Eff.Console (print, CONSOLE())
 import Control.Monad.Eff.Exception (throwException, error, EXCEPTION())
-import DOM.Timer
+import Control.Monad.Eff.Timer
 
-main :: forall eff. Eff (console :: CONSOLE, timer :: Timer, err :: EXCEPTION | eff) Unit
+main :: forall eff. Eff (console :: CONSOLE, timer :: TIMER, err :: EXCEPTION | eff) Unit
 main = do
   print 1
   a <- timeout 10 $ do
