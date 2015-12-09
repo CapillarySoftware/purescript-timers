@@ -2,7 +2,7 @@
 "use strict";
 
 
-// module DOM.Timer
+// module Control.Monad.Eff.Timer
 
 exports.timeout = function(time){
   return function(fn){

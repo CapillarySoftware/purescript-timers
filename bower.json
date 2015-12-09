@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "homepage": "https://github.com/CapillarySoftware/purescript-timers",
   "authors": [
-    "Isaac Shapira <fresheyeball@gmail.com>"
+    "Isaac Shapira <fresheyeball@gmail.com>",
+    "foollbar <foollbar@gmail.com>"
   ],
   "description": "Native timer bindings for PureScript",
   "keywords": [
