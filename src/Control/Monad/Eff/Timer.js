@@ -7,9 +7,7 @@
 exports.timeout = function(time){
   return function(fn){
     return function(){
-      return setTimeout(function(){
-        fn();
-      }, time);
+      return setTimeout(fn, time);
     };
   };
 };
@@ -23,9 +21,7 @@ exports.clearTimeout = function(timer){
 exports.interval = function(time){
   return function(fn){
     return function(){
-      return setInterval(function(){
-        fn();
-      }, time);
+      return setInterval(fn, time);
     };
   };
 };
