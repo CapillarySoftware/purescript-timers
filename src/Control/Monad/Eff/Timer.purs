@@ -18,11 +18,12 @@
 module Control.Monad.Eff.Timer where
 
 import Prelude
-import Control.Monad.Eff
 
-foreign import data TIMER     :: !
-foreign import data Timeout   :: *
-foreign import data Interval  :: *
+import Control.Monad.Eff (Eff, kind Effect)
+
+foreign import data TIMER     :: Effect
+foreign import data Timeout   :: Type
+foreign import data Interval  :: Type
 
 type Milliseconds = Int
 
